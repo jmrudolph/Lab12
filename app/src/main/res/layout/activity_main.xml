@@ -31,12 +31,29 @@
         android:layout_height="wrap_content"
         tools:text="@string/Text_View"
         android:text="@string/Math_Fact" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter an integer" />
+    </android.support.design.widget.TextInputLayout>
+
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spin"
         android:entries="@array/fact_type">
     </Spinner>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pi_symbol" />
     <!---->
     <!--<ScrollView-->
         <!--android:layout_width="wrap_content"-->

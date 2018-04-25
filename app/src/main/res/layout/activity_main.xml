@@ -11,26 +11,32 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Text_View"
-        tools:text="@string/Number" />
+        tools:text="@string/Text_View"
+        android:text="@string/Number" />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Text_View"
-        tools:text="@string/Date" />
+        tools:text="@string/Text_View"
+        android:text="@string/Date" />
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Text_View"
-        tools:text="@string/Year" />
+        tools:text="@string/Text_View"
+        android:text="@string/Year" />
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Text_View"
-        tools:text="@string/Math_Fact" />
+        tools:text="@string/Text_View"
+        android:text="@string/Math_Fact" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spin"
+        android:entries="@array/fact_type">
+    </Spinner>
     <!---->
     <!--<ScrollView-->
         <!--android:layout_width="wrap_content"-->

@@ -3,6 +3,10 @@ package edu.illinois.cs.cs125.lab12;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,9 +40,23 @@ public final class MainActivity extends AppCompatActivity {
         // Set up the queue for our API requests
         requestQueue = Volley.newRequestQueue(this);
 
-        setContentView(R.layout.activity_main);
 
-        startAPICall();
+        final Button startAPICall = findViewById(R.id.Button);
+        startAPICall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Spinner mySpinner = (Spinner) findViewById(R.id.spin);
+                String catagory = mySpinner.getSelectedItem().toString();
+
+                EditText myEdit = (EditText) findViewById(R.id.editText);
+                String text = myEdit.getText().toString();
+
+                Log.d(TAG, "Start API button clicked");
+                startAPICall(catagory, text);
+            }
+        });
+
+        setContentView(R.layout.activity_main);
     }
 
     /**
@@ -50,9 +68,12 @@ public final class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *
      * Make a call to the weather API.
+     * @param catagory catagory in spinner
+     * @param text text in text box
      */
-    void startAPICall() {
+    void startAPICall(final String catagory, final String text) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,

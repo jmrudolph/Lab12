@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Lab 12</string>
+    <string-array name="fact_type">
+    <item>Number</item>
+    <item>Date</item>
+    <item>Year</item>
+    <item>Math Fact</item>
+    </string-array>
+    <string name="Number">Choose Number to see a random fact about the number you input, with the topic being random.</string>
+    <string name="Date">Choose Date and then enter in the number in the following format mm/dd/yyyy to see a random fact about that specific date in time.</string>
+    <string name="Year">Choose Year and enter in a year to see a random fact about that specific year.</string>
+    <string name="Math_Fact">Choose Math Fact to see a random fact about the relation that that specific number has with math</string>
+    <string name="Text_View">Text View</string>
 </resources>

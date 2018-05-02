@@ -8,29 +8,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="@string/Text_View"
-        android:text="@string/Number" />
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/Text_View"
-        android:text="@string/Date" />
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/Text_View"
-        android:text="@string/Year" />
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/Text_View"
-        android:text="@string/Math_Fact" />
+        android:text="" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/TextInput"
@@ -47,8 +28,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spin"
-        android:entries="@array/fact_type">
+        android:id="@+id/spin">
     </Spinner>
 
     <Button
@@ -62,36 +42,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/pi_symbol" />
-    <!---->
-    <!--<ScrollView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content">-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical">-->
-
-            <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent">-->
-
-                <!--<android.support.design.widget.TextInputEditText-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="hint"-->
-                    <!--android:visibility="visible"-->
-                    <!--tools:text="Enter City Name Here" />-->
-            <!--</android.support.design.widget.TextInputLayout>-->
-        <!--</LinearLayout>-->
-    <!--</ScrollView>-->
-
-    <!--<Button-->
-        <!--android:id="@+id/button"-->
-        <!--style="@style/Widget.AppCompat.Button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Get Weather"-->
-        <!--android:visibility="visible" />-->
 
 </LinearLayout>

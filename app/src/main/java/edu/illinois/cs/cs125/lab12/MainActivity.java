@@ -137,8 +137,8 @@ public final class MainActivity extends Activity {
         if (catagory.equals("math fact")) {
             catagory = "math";
         }
-
         try {
+            double d = Double.parseDouble(number);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
                     "http://numbersapi.com/" + number + "/" + catagory + "?json"
@@ -150,16 +150,22 @@ public final class MainActivity extends Activity {
                             try {
                                 Log.d(TAG, response.toString(2));
                                 successfulAPICall(response.toString());
-                            } catch (JSONException ignored) { }
+                            } catch (JSONException ignored) {
+                            }
                         }
                     }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(final VolleyError error) {
-                            Log.e(TAG, error.toString());
-                        }
-                    });
+                @Override
+                public void onErrorResponse(final VolleyError error) {
+                    Log.e(TAG, error.toString());
+                }
+            });
             requestQueue.add(jsonObjectRequest);
-        } catch (Exception e) {
+        } catch (NumberFormatException nfe) {
+            final TextView textView = findViewById(R.id.result);
+            textView.setText("Invalid input, please retry.");
+            Log.d(TAG, "Invalid input");
+        }
+        catch (Error e) {
             e.printStackTrace();
         }
     }

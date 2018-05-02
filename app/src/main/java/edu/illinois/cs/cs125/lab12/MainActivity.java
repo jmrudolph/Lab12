@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -161,9 +162,10 @@ public final class MainActivity extends Activity {
             });
             requestQueue.add(jsonObjectRequest);
         } catch (NumberFormatException nfe) {
-            final TextView textView = findViewById(R.id.result);
-            textView.setText("Invalid input, please retry.");
+//            final TextView textView = findViewById(R.id.result);
+//            textView.setText();
             Log.d(TAG, "Invalid input");
+            Toast.makeText(this, "Invalid input, please retry.", Toast.LENGTH_SHORT).show();
         }
         catch (Error e) {
             e.printStackTrace();
@@ -186,8 +188,9 @@ public final class MainActivity extends Activity {
             response = "something failed oops";
             ignored.printStackTrace();
         }
-        final TextView textView = findViewById(R.id.result);
-        textView.setText(response);
+//        final TextView textView = findViewById(R.id.result);
+//        textView.setText(response);
+        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
         Log.d(TAG, "API call completed");
     }
 }

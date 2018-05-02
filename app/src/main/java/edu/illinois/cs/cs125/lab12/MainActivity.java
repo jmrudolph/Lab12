@@ -23,6 +23,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 /**
  * Main class for our UI design lab.
  */
@@ -30,7 +33,7 @@ public final class MainActivity extends Activity {
     /**
      * categories lists the different categories in the spinner.
      */
-    private String[] categories = {"Number", "Date", "Year", "Math Fact"};
+    private String[] categories = {"Trivia", "Date", "Year", "Math Fact"};
     /**
      * description provides a description for each category.
      */
@@ -103,6 +106,14 @@ public final class MainActivity extends Activity {
 
             }
         });
+        final Button button = findViewById(R.id.Button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Start API button clicked");
+                startAPICall();
+            }
+        });
     }
 
     /**
@@ -116,14 +127,21 @@ public final class MainActivity extends Activity {
     /**
      *
      * Make a call to the weather API.
-     * @param catagory catagory in spinner
-     * @param text text in text box
      */
-    void startAPICall(final String catagory, final String text) {
+    void startAPICall() {
+        Spinner mySpinner = findViewById(R.id.spin);
+        String catagory = mySpinner.getSelectedItem().toString().toLowerCase();
+
+        EditText myEdit = findViewById(R.id.editText);
+        String number = myEdit.getText().toString();
+        if (catagory.equals("math fact")) {
+            catagory = "math";
+        }
+
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "http://api.openweathermap.org/data/2.5/weather?zip=61820,us&appid=979ebb4565aaf90cba237fd30b7a76f9"
+                    "http://numbersapi.com/" + number + "/" + catagory + "?json"
                             + BuildConfig.API_KEY,
                     null,
                     new Response.Listener<JSONObject>() {
@@ -131,6 +149,7 @@ public final class MainActivity extends Activity {
                         public void onResponse(final JSONObject response) {
                             try {
                                 Log.d(TAG, response.toString(2));
+                                successfulAPICall(response.toString());
                             } catch (JSONException ignored) { }
                         }
                     }, new Response.ErrorListener() {
@@ -143,5 +162,26 @@ public final class MainActivity extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    void successfulAPICall(final String json) {
+        String response;
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject result = parser.parse(json).getAsJsonObject();
+            System.out.println(result.get("found"));
+            System.out.println("That worked");
+            if (result.get("found").getAsBoolean()) {
+                response = result.get("text").getAsString();
+            } else {
+                response = "Number format not correct, Please try again.";
+            }
+        } catch (Exception ignored) {
+            response = "something failed oops";
+            ignored.printStackTrace();
+        }
+        final TextView textView = findViewById(R.id.result);
+        textView.setText(response);
+        Log.d(TAG, "API call completed");
     }
 }
